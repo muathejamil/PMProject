@@ -1,0 +1,21 @@
+<mat-toolbar>
+  <div>
+    <a routerLink="FLMainPage">Home</a>
+    <a routerLink="showJob">Offers</a>
+    <a routerLink="FLTasks">Task</a>
+    <a routerLink="FLTeams">Teams</a>
+  </div>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>person_outline</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button  routerLink='' mat-menu-item>
+      <span class="material-icons">
+        exit_to_app
+      </span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+<div>
+  <router-outlet></router-outlet>
+</div>

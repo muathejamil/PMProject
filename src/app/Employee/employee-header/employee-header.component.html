@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <div>
+    <a routerLink="EmployeeHomePage">Home</a>
+    <a routerLink="EmployeeTask">Task</a>
+    <a routerLink="EmployeeTeam">Teams</a>
+  </div>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>person_outline</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button  routerLink='' mat-menu-item >EXIT</button>
+  </mat-menu>
+</mat-toolbar>
+<div>
+  <router-outlet></router-outlet>
+</div>

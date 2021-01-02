@@ -1,0 +1,180 @@
+<section id="join-us" class="features-area">
+  <div class="join-us" fxLayoutAlign="center center" fxFlexFill>
+    <mat-card fxFlex="25">
+      <mat-card-title>LOGIN</mat-card-title>
+      <br />
+      <form fxLayout="column" #form="ngForm" (submit)="onLoginSubmit(form)">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input
+            matInput
+            name="userEmail"
+            #userEmail
+            ngModel
+            placeholder="pat@example.com"
+            required
+          />
+          <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input
+            matInput
+            name="userPassword"
+            #userPassword
+            ngModel
+            [type]="hide ? 'password' : 'text'"
+            required
+          />
+          <mat-error *ngIf="password.invalid">{{
+            get2ErrorMessage()
+          }}</mat-error>
+
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <a href="#">Forgot password?</a>
+
+        <button class="logBtn" mat-raised-button type="submit">Log in</button>
+      </form>
+    </mat-card>
+
+    <mat-card fxFlex="25" class="sign-up">
+      <mat-card-title>SIGNUP</mat-card-title>
+      <br />
+      <form fxLayout="column" #form2="ngForm" (submit)="onSignupSubmit(form2)">
+        <mat-form-field>
+          <input
+            name="firstName"
+            #firstName
+            ngModel
+            matInput
+            placeholder="Fist Name"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            name="lastName"
+            #lastName
+            ngModel
+            matInput
+            placeholder="Second Name"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input
+            name="userEmail"
+            #userEmail
+            ngModel
+            matInput
+            placeholder="pat@example.com"
+            required
+          />
+          <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>User Type</mat-label>
+          <mat-select name="userType" #userType ngModel>
+            <mat-option
+              value="Manager"
+              (onSelectionChange)="onEmployeeSituation('manager')"
+              >Manager</mat-option
+            >
+            <mat-option
+              value="Employee"
+              (onSelectionChange)="onEmployeeSituation('employee')"
+              >Employee</mat-option
+            >
+            <mat-option
+              value="Freelancer"
+              (onSelectionChange)="onEmployeeSituation('freelancer')"
+              >Freelancer</mat-option
+            >
+          </mat-select>
+          <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="employeeChecked == true">
+          <input
+            name="companyID"
+            #companyID
+            ngModel
+            matInput
+            placeholder="Company ID"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field *ngIf="employeeChecked == true || freelancerchecked == true"  >
+          <input
+          name="Specialty"
+          #Specialty
+          ngModel
+          matInput
+          placeholder="Specialty"
+          required
+        />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input
+            name="userPassword"
+            #userPassword
+            ngModel
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            required
+          />
+          <mat-error *ngIf="password.invalid">{{
+            get2ErrorMessage()
+          }}</mat-error>
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm your password</mat-label>
+          <input
+            name="confirmPassword"
+            #confirmPassword
+            ngModel
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            required
+          />
+          <mat-error *ngIf="password.invalid">{{
+            get2ErrorMessage()
+          }}</mat-error>
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <button class="signBtn" mat-raised-button type="submit">Sign Up</button>
+      </form>
+    </mat-card>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+  background: rgb(0, 153, 0);
+  height: 50px;
+}
+a {
+  margin-left: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+}
+mat-icon {
+  color: white;
+}

@@ -1,0 +1,24 @@
+<div>
+<mat-accordion multi="true">
+  <mat-expansion-panel *ngFor="let report of data.task.Reports">
+    <mat-expansion-panel-header> From >>
+      {{ report.Employeename}}
+    </mat-expansion-panel-header>
+    <p> discription >>{{report.discription}}</p>
+    <p></p>
+    <p></p>
+
+  </mat-expansion-panel>
+</mat-accordion>
+</div>
+<div>
+<p class="info-text mat-body-1" *ngIf="data.task.Reports.length <= 0">NO Reports yet</p>
+   <button
+        type="button"
+        class="btn btn-danger ml-1"
+        style="height: 38px; margin-top: auto;"
+        [mat-dialog-close]
+      >
+        Close
+   </button>
+ </div>

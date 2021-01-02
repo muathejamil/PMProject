@@ -1,0 +1,18 @@
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+mat-card {
+  height: 600px;
+}
+.sign-up {
+  margin-left: 10px;
+}
+.signBtn,
+.logBtn {
+  background: rgb(0, 153, 0);
+  color: azure;
+  justify-content: center;
+}
+mat-card-title {
+  justify-content: center;
+}

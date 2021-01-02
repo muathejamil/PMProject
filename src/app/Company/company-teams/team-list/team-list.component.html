@@ -1,0 +1,40 @@
+<div class="jumbotron jumbotron-fluid">
+  <h1 class="display-4 text-center"></h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <table class="table table-hover">
+          <thead class="thead-light">
+            <th>Team Name</th>
+            <th>Team Manager</th>
+            <th>Team Employee</th>
+            <th>Task No.</th>
+            <th>Projects No.</th>
+            <th>
+              <a class="btn btn-outline-success" routerLink="../">
+                New Team
+              </a>
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let team of TeamListe ">
+              <th (click)="openForEdit(team.teamID)">{{ team.teamName }}</th>
+              <td (click)="openForEdit(team.teamID)">{{ team.SuperVisorName }}</td>
+              <td
+                class="td-imp"
+                (click)="openForEdit(team.teamID)"
+                *ngFor="let emps of team.EmployeesNames"
+              >
+                {{ emps}}
+              </td>
+              <td (click)="openForEdit(team.teamID)">{{ team.NumOfTasks }}</td>
+              <td (click)="openForEdit(team.teamID)">{{ team.NumOfProjects }}</td>
+
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

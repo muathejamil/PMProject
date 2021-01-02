@@ -1,0 +1,72 @@
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  <input
+    type="hidden"
+    name="employeeID"
+    #employeeID="ngModel"
+    [(ngModel)]="service.formData.EmployeeID"
+  />
+  <div class="from-group">
+    <label>Full Name</label>
+    <input
+      name="FullName"
+      #FullName="ngModel"
+      [(ngModel)]="service.formData.FullName"
+      class="form-control"
+      required
+    />
+    <div class="validation-error" *ngIf="FullName.invalid && FullName.touched">
+      This field is required.
+    </div>
+  </div>
+  <div class="from-group">
+    <label>Position</label>
+    <input
+      name="Position"
+      #Position="ngModel"
+      [(ngModel)]="service.formData.Position"
+      class="form-control"
+    />
+  </div>
+  <div class="form-row">
+
+    <div class="from-group col-md-6">
+      <label>Mobile</label>
+      <input
+        name="Mobile"
+        #Mobile="ngModel"
+        [(ngModel)]="service.formData.Mobile"
+        class="form-control"
+      />
+    </div>
+    <div class="from-group col-md-6">
+      <label>Employee Email</label>
+      <input
+        type="email"
+        placeholder="Exp..user@company.com"
+        name="employeeEmail"
+        #employeeEmail="ngModel"
+        [(ngModel)]="service.formData.employeeEmail"
+        class="form-control"
+      />
+    </div>
+    <div class="from-group col-md-6">
+      <label>Employee Password</label>
+      <input
+        type="password"
+        name="employeePassword"
+        #employeePassword="ngModel"
+        [(ngModel)]="service.formData.employeePassword"
+        class="form-control"
+      />
+    </div>
+  </div>
+  <div class="form-group btn-sav">
+    <button
+      type="submit"
+      [disabled]="form.invalid"
+      class="btn btn-lg btn-block"
+    >
+      Add
+    </button>
+  </div>
+</form>

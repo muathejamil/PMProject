@@ -1,0 +1,24 @@
+<h4 class="display-4">Add Employees</h4>
+<hr />
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <div class="form-group">
+    <label> Employee Name</label>
+    <select
+      name="employeeName"
+      #employeeName="ngModel"
+      [(ngModel)]="formData.EmployeeName"
+      class="form-control"
+      [class.is-invalid]="!isValid && formData.EmployeeName == ''"
+    >
+      <option value="">-Select</option>
+      <option *ngFor="let employee of employeeTeam" value="{{ employee }}">
+        {{ employee.EmployeeName }}</option
+      >
+    </select>
+  </div>
+  <button type="sumbit" class="btn btn-dark">Add</button>
+
+  <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]>
+    Close
+  </button>
+</form>

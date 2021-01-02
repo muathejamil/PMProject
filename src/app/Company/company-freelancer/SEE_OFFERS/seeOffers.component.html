@@ -1,0 +1,62 @@
+<div class="jumbotron jumbotron-fluid">
+  <h1 class="display-4 text-center">Company Offers
+    <div>
+  </div>
+  </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <table class="table table-hover">
+          <thead class="thead-light">
+            <th>Offer NO.</th>
+            <th>offer Name</th>
+            <th>offer status.</th>
+
+            <th>dueto</th>
+            <th>freelancers applaied</th>
+            <th>
+
+              <!--
+                 <button class="btn btn-outline-success" routerLink="/">
+                Button
+              </button>
+              -->
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let offer of Offers;let i=index">
+              <th>{{i+1}}</th>
+              <td>{{offer.name}}</td>
+              <td>{{offer.status}}</td>
+              <td>{{offer.dueto}}</td>
+              <td>
+
+<mat-accordion multi="true" *ngIf="offer.freelancers.length > 0">
+  <mat-expansion-panel *ngFor="let freelancer of offer.freelancers">
+    <mat-expansion-panel-header>
+      {{ freelancer.name}}
+    </mat-expansion-panel-header>
+    <p> Hourly rate >>{{freelancer.Hourly_rate}}</p>
+    <p>specality >>{{freelancer.specality}}</p>
+    <p></p>
+    <p></p>
+    <mat-action-row>
+      <button mat-button color="primary" (click)="accepted(offer,freelancer)">accepte</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="offer.freelancers.length <= 0">NO free lancers yet</p>
+
+              </td>
+              <td>
+                <button class="btn btn-sm btn-danger text-white ml-1">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,154 @@
+<app-widgets-area></app-widgets-area>
+
+<form
+  #form="ngForm"
+  autocomplete="off"
+  *ngIf="projService.formData"
+  (submit)="onSubmit(form)"
+>
+  <input
+    type="hidden"
+    name="projectID"
+    #projectID="ngModel"
+    [(ngModel)]="projService.formData.projectID"
+  />
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Project Name</label>
+        <input
+          [class.is-invalid]="
+            !isValid && projService.formData.projectName == ''
+          "
+          type="text"
+          class="form-control"
+          name="projectName"
+          ngModel
+          required
+          minlength="3"
+          #projectName="ngModel"
+          [(ngModel)]="projService.formData.projectName"
+        />
+      </div>
+      <div class="form-group">
+        <label>Project Manager</label>
+        <select
+          style="margin-top: 21px;"
+          name="employeeID"
+          #employeeID="ngModel"
+          [(ngModel)]="projService.formData.employeeID"
+          class="form-control"
+          [class.is-invalid]="!isValid && projService.formData.employeeID == 0"
+        >
+          <option value="0">-Select</option>
+          <option *ngFor="let emp of employeeList" value="{{ emp.EmployeeID }}">
+            {{ emp.EmployeeName }}</option
+          >
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group"></div>
+      <div class="form-group" style="margin-top: 85px;">
+        <label>Project duration</label>
+        <div class="row dates-class">
+          <mat-form-field>
+            <input
+              placeholder="Start Date"
+              matInput
+              [matDatepicker]="myDateP"
+              name="stDate"
+              #stDate="ngModel"
+              [(ngModel)]="projService.formData.stDate"
+              class="form-control"
+            />
+            <mat-datepicker-toggle
+              [for]="myDateP"
+              matSuffix
+            ></mat-datepicker-toggle>
+            <mat-datepicker #myDateP></mat-datepicker>
+          </mat-form-field>
+
+          <br />
+          <br />
+
+          <mat-form-field>
+            <input
+              placeholder="Submition Date"
+              matInput
+              [matDatepicker]="myDatePy"
+              name="endDate"
+              #endDate="ngModel"
+              [(ngModel)]="projService.formData.endDate"
+              class="form-control"
+            />
+            <mat-datepicker-toggle
+              [for]="myDatePy"
+              matSuffix
+            ></mat-datepicker-toggle>
+            <mat-datepicker #myDatePy></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark">Add</button>
+  </div>
+  <table class="table table-borderless">
+    <thead class="thead-light">
+      <th>Task NO.</th>
+      <th>Finished%</th>
+      <th>Team</th>
+      <th>Reports</th>
+      <th>
+        <a
+          class="btn btn-sm btn-success text-white"
+          (click)="
+            addOrEditTask(lastProjectId, null)
+          "
+        >
+          Manage Tasks
+        </a>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of detalisTaskArray; let i = index">
+        <td>{{ task.TaskName }}</td>
+        <td>{{task.Finished}}</td>
+        <td *ngFor="let team of task.TeamsName">{{ team }}</td>
+        <td>
+          <a
+            class="btn btn-sm btn-info text-white"
+            (click)="SeeReports(task)"
+          >
+            see Reports
+        </a>
+        <td>
+          <a
+            class="btn btn-sm btn-info text-white"
+            (click)="addOrEditTask(lastProjectId,task)"
+          >
+            Edit Task
+          </a>
+
+          <a
+            class="btn btn-sm btn-danger text-white ml-1"
+            (click)="onDeleteTask(null, i)"
+          >
+            Delete Task
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="form-group">
+    <a
+      class="btn btn-outline-success"
+      routerLink="projectList"
+      style="margin-top: 19px; margin-left: 5px;"
+    >
+      Projects List
+    </a>
+  </div>
+</form>

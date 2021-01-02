@@ -1,0 +1,141 @@
+<h4 class="display-4">Manage Tasks</h4>
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <div class="row">
+    <div class="form-group">
+      <mat-form-field class="example-full-width" style="margin-top: 26px;">
+        <mat-label>Task</mat-label>
+        <input matInput placeholder="Ex. Task 123" value=""
+        name="taskname"
+        #taskname="ngModel"
+        [(ngModel)]="formData.taskname"
+        class="form-group" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group" style="margin-left: 45px;">
+      <label>
+        To
+      </label>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="form-group" style="margin-left: 45px;">
+      <label>Team Name</label>
+      <select
+        name="teamName"
+        #teamName="ngModel"
+        [(ngModel)]="formData.teamName"
+        class="form-control"
+        [class.is-invalid]="!isValid && formData.teamName == ''"
+      >
+        <option value="0">-Select</option>
+        <option *ngFor="let team of teamList" value="{{ team.teamID }}">
+          {{ team.teamName }}
+        </option>
+      </select>
+    </div>
+    <mat-label>Or</mat-label>
+    <div class="form-group" style="margin-left: 45px;">
+      <label>Employee Name</label>
+      <select
+        name="employeename"
+        #employeename="ngModel"
+        [(ngModel)]="formData.employeename"
+        class="form-control"
+        [class.is-invalid]="!isValid && formData.teamName == ''"
+      >
+        <option value=null>- Select</option>
+        <option *ngFor="let employee of employeeList" value="{{ employee.EmployeeID }}">
+          {{ employee.EmployeeName }}
+        </option>
+      </select>
+    </div>
+
+
+<br>
+<br>
+<div style="margin-left: 10%;">
+  <mat-form-field >
+    <input
+      placeholder="Start Date"
+      matInput
+      [matDatepicker]="myDateP"
+      name="stDate"
+      #stDate="ngModel"
+      [(ngModel)]="formData.stDate"
+      class="form-group"
+    />
+    <mat-datepicker-toggle
+      [for]="myDateP"
+      matSuffix
+    ></mat-datepicker-toggle>
+    <mat-datepicker #myDateP></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <br>
+  <mat-form-field>
+    <input
+      placeholder="Submition Date"
+      matInput
+      [matDatepicker]="myDatePy"
+      name="endDate"
+      #endDate="ngModel"
+      [(ngModel)]="formData.endDate"
+      class="form-control"
+    />
+    <mat-datepicker-toggle
+      [for]="myDatePy"
+      matSuffix
+    ></mat-datepicker-toggle>
+    <mat-datepicker #myDatePy></mat-datepicker>
+  </mat-form-field>
+
+</div>
+<div style="margin-left: 30px;">
+  <label>This Task Dependent On</label>
+  <select
+    name="task"
+    #task="ngModel"
+    [(ngModel)]="formData.task"
+    class="form-control"
+    [class.is-invalid]="!isValid && formData.teamName == ''"
+  >
+    <option value=null>- Select</option>
+    <option *ngFor="let task of TaskList" value="{{ task._id }}">
+      {{ task.name }}
+    </option>
+  </select>
+
+      <th>Priority</th>
+
+
+          <select   name="depend"
+          #depend="ngModel"
+          [(ngModel)]="formData.depend"
+          class="form-control"
+          [class.is-invalid]="!isValid && formData.teamName == ''"
+          class="form-group">
+            <option value="0">- Select</option>
+            <option>1 </option>
+            <option>2</option>
+            <option>3</option>
+            <option>4 </option>
+            <option>5 </option>
+          </select>
+        </div>
+</div>
+  <div class="form-group">
+    <div class="row">
+      <button type="submit" class="btn btn-dark">Add</button>
+      <button
+        type="button"
+        class="btn btn-danger ml-1"
+        style="height: 38px; margin-top: auto;"
+        [mat-dialog-close]
+      >
+        Close
+      </button>
+    </div>
+  </div>
+
+</form>

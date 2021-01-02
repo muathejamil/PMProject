@@ -1,0 +1,51 @@
+<div *ngIf="!Companysevice.CompanyID">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Create New Company</h3>
+      </div>
+      <div class="modal-body">
+        <form #form="ngForm" (submit)="onAddJob(form)">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Company Name</label>
+            <input
+              #Name
+              name="Name"
+              ngModel
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              autocomplete="false"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Description</label>
+            <textarea
+              #description
+              name="description"
+              ngModel
+              class="form-control"
+              id="exampleInputPassword1"
+            >
+            </textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="Companysevice.CompanyID">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+<H1> you already have Company </H1>
+</div>
+<H2 style="margin-left: 155px;"> you'r Company ID is  </H2>
+<H2 style="margin-left: 100px;">{{Companysevice.CompanyID}}</H2>
+</div>
+</div>
+</div>

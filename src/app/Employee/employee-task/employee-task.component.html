@@ -1,0 +1,36 @@
+<div class="jumbotron jumbotron-fluid">
+  <h1 class="display-4 text-center">My Tasks</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <table class="table table-hover">
+          <thead class="thead-light">
+            <th>Task NO.</th>
+            <th>Project Name</th>
+            <th>STATUS</th>
+            <th>Finshid %</th>
+            <th>Start Date</th>
+            <th>Submission Date</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of taskList">
+              <th>{{ task.taskName }}</th>
+              <td>{{ task.ProjectName}}</td>
+              <td>
+                {{ task.stutus }}
+              </td>
+              <td>
+                {{ task.Finished }}
+              </td>
+              <td>{{ task.StartDate }}</td>
+              <td>{{ task.EndDate }}</td>
+              <td><button (click)="edit(task)">update</button></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

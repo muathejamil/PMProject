@@ -1,0 +1,32 @@
+<div class="jumbotron jumbotron-fluid">
+  <h1 class="display-4 text-center">Enrolled Teams</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <table class="table table-hover">
+          <thead class="thead-light">
+            <th>Team Name</th>
+            <th>Manager Name</th>
+            <th>Team members</th>
+
+            <th></th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let team of teamList">
+              <th>{{ team.name }}</th>
+              <td>{{ team.ManagerName }}</td>
+              <td>{{ team.Teammembers }}</td>
+              <td>
+                <a (click)="onEditTeam()">
+                  <span class="material-icons">
+                    create
+                  </span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

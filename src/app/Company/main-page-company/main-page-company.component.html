@@ -1,0 +1,11 @@
+<app-dash-header (menuStatus)="onTrigger($event)"></app-dash-header>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" [opened]="sideBarStatus"
+    ><app-dash-side-bar></app-dash-side-bar
+  ></mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+<app-dash-footer></app-dash-footer>

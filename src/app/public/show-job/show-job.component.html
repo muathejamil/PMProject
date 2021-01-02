@@ -1,0 +1,34 @@
+<div class="container">
+  <mat-toolbar style="width: 708px; margin-left: 200px;"
+    >Available Jobs</mat-toolbar
+  >
+  <div
+
+    style="margin-left: 200px; margin-right: 200px; margin-top: 20px;"
+  >
+    <mat-card *ngFor="let offer of jobs; let i=index"
+    >
+
+    <div class="d-flex w-100 justify-content-between">
+      <h1 class="mb-1">{{offer.name}}</h1>
+      <small class="text-muted">{{offer.dueto}}</small>
+    </div>
+    <p class="mb-1">
+      {{offer.description}}
+    </p>
+    <small class="text-muted">{{offer.status}}</small>
+    <br />
+    <button
+      mat-stroked-button
+      style="margin-bottom: 11px; color: rgb(2, 0, 128);"
+      (click)="apply(offer._id,i)"
+    >
+      Apply
+    </button>
+    </mat-card>
+
+
+
+
+  </div>
+</div>

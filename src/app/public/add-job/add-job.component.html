@@ -1,0 +1,57 @@
+<div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">New Job</h3>
+      </div>
+      <div class="modal-body">
+        <form #form="ngForm" (submit)="onAddJob(form)">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Title</label>
+            <input
+              #title
+              name="title"
+              ngModel
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter title"
+              autocomplete="false"
+            />
+          </div>
+
+          <mat-form-field>
+            <input
+              placeholder="Submition Date"
+              matInput
+              ngModel
+              [matDatepicker]="myDatePy"
+              name="endDate"
+              #endDate="ngModel"
+              class="form-control"
+            />
+            <mat-datepicker-toggle
+              [for]="myDatePy"
+              matSuffix
+            ></mat-datepicker-toggle>
+            <mat-datepicker #myDatePy></mat-datepicker>
+          </mat-form-field>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Description</label>
+            <textarea
+              #description
+              name="description"
+              ngModel
+              class="form-control"
+              id="exampleInputPassword1"
+            >
+            </textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

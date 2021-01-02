@@ -1,0 +1,55 @@
+<div class="first-div">
+  <app-widgets-area [data]="bigCharts"></app-widgets-area>
+</div>
+<br />
+<mat-divider></mat-divider>
+<br />
+
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between-center"
+  fxLayoutGap="20px"
+  class="stats-cards"
+>
+  <mat-card fxFlex="25">
+    <app-widget-card
+      label="Project 1"
+      total="10k"
+      percentage="50"
+      [data]="cards"
+    ></app-widget-card>
+  </mat-card>
+  <mat-card fxFlex="25">
+    <app-widget-card
+      label="Project 2"
+      total="19k"
+      percentage="30"
+      [data]="cards"
+    ></app-widget-card>
+  </mat-card>
+  <mat-card fxFlex="25">
+    <app-widget-card
+      label="Project 3"
+      total="11k"
+      percentage="60"
+      [data]="cards"
+    ></app-widget-card>
+  </mat-card>
+  <mat-card fxFlex="25">
+    <app-widget-card
+      label="Project 4"
+      total="15k"
+      percentage="70"
+      [data]="cards"
+    ></app-widget-card>
+  </mat-card>
+</div>
+<br />
+<mat-divider></mat-divider>
+<br />
+<div fxLayout="row" fxLayoutAlign="space_between_center" fxLayoutGap="20px">
+  <div fxFlex="60"><app-widget-table></app-widget-table></div>
+  <div fxFlex="40" style="height: 200px;">
+    <app-widget-pie [data]="pie"></app-widget-pie>
+  </div>
+</div>

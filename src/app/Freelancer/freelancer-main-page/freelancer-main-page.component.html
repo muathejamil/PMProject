@@ -1,0 +1,24 @@
+<!-- <app-freelancer-min-header
+  (menuStatus)="onSlide($event)"
+></app-freelancer-min-header>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" [opened]="sideBarStatus"></mat-drawer>
+  <app-freelancer-side-nav></app-freelancer-side-nav>
+
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+<app-min-footer></app-min-footer> -->
+<app-freelancer-min-header
+  (menuStatus)="onSlide($event)"
+></app-freelancer-min-header>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" [opened]="sideBarStatus"
+    ><app-freelancer-side-nav></app-freelancer-side-nav
+  ></mat-drawer>
+  <mat-drawer-content><router-outlet></router-outlet></mat-drawer-content>
+</mat-drawer-container>
+<app-min-footer></app-min-footer>

@@ -1,0 +1,8 @@
+<app-min-header (menuStatus)="onSlide($event)"></app-min-header>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" [opened]="sideBarStatus"
+    ><app-min-side-nav> </app-min-side-nav
+  ></mat-drawer>
+  <mat-drawer-content><router-outlet></router-outlet></mat-drawer-content>
+</mat-drawer-container>
+<app-min-footer></app-min-footer>

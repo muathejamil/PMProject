@@ -1,0 +1,147 @@
+<form
+  #form="ngForm"
+  autocomplete="off"
+  *ngIf="teamService.teamForm"
+  (submit)="onSubmit(form)"
+>
+  <div class="row">
+    <input
+      type="hidden"
+      name="teamID"
+      #teamID="ngModel"
+      [(ngModel)]="teamService.teamForm.teamID"
+      class="form-control"
+    />
+    <input
+      type="hidden"
+      name="teamEmp"
+      #teamEmp="ngModel"
+      [(ngModel)]="teamService.teamForm.teamEmp"
+    />
+    <input
+      type="hidden"
+      name="teamTask"
+      #teamTask="ngModel"
+      [(ngModel)]="teamService.teamForm.teamTask"
+    />
+    <input
+      type="hidden"
+      name="managerID"
+      #managerID="ngModel"
+      [(ngModel)]="teamService.teamForm.managerID"
+    />
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Team Name</label>
+        <input
+          name="teamName"
+          #teamName="ngModel"
+          [(ngModel)]="teamService.teamForm.teamName"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Team Manager</label>
+        <select
+          name="teamManager"
+          #teamManager="ngModel"
+          [(ngModel)]="teamService.teamForm.managerName"
+          class="form-control"
+          [class.is-invalid]="
+            !isValid && teamService.teamForm.managerName == ''
+          "
+        >
+          <option value="">-Select</option>
+          <option
+            *ngFor="let employee of teamManagerList"
+            [value]="employee.EmployeeID"
+          >
+            {{ employee.EmployeeName }}</option
+          >
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <h4 class="display-4">Add Employees</h4>
+        <hr />
+
+        <div class="form-group">
+          <label> Employee Name</label>
+          <select
+            name="employeeName"
+            class="form-control"
+            [(ngModel)]="selectedEmployee"
+          >
+            <option value="">-Select</option>
+            <option
+              *ngFor="let emp of teamManagerList"
+              [value]="emp.EmployeeID"
+            >
+              {{ emp.EmployeeName }}</option
+            >
+          </select>
+        </div>
+        <a (click)="onSubmitEmployee()" class="btn btn-outline-dark ml-1">
+          Add
+        </a>
+      </div>
+    </div>
+  </div>
+  <table class="table tane-borderless">
+    <thead class="thead-light">
+      <th>Employee ID</th>
+      <th>Employee Name</th>
+      <th>Employee Position</th>
+      <th>
+        <!--
+          <button
+          class="btn btn-sm btn-success"
+          (click)="addOrEditEmployee(null, teamService.teamForm.teamID)"
+        >
+          Add Employee
+        </button>
+        -->
+      </th>
+    </thead>
+    <tbody>
+      <tr
+        *ngIf="teamEmployeeList.length == 0"
+        [class.text-danger]="!isValid && teamEmployeeList.length == 0"
+      >
+        <td class="font-italic text-center" colspan="2">
+          No Employee Added To The Team
+        </td>
+      </tr>
+      <tr *ngFor="let employee of teamEmployeeList; let i = index">
+        <td>{{ employee.EmployeeID }}</td>
+        <td>{{ employee.EmployeeName }}</td>
+        <td>{{ employee.EmployeePosition }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-info"
+            (click)="addOrEditEmployee(i, teamService.teamForm.teamID)"
+          >
+            Edit Employee
+          </button>
+          <button
+            class="btn btn-sm btn-danger ml-1"
+            (click)="onDeleteEmployee(employee.EmployeeID, i)"
+          >
+            Delete Employee
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="form-group">
+    <button type="sumbit" class="btn btn-dark">Add Team</button>
+    <a type="button" class="btn btn-outline-dark ml-1" routerLink="teamList">
+      Team List
+    </a>
+  </div>
+</form>
